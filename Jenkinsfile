@@ -6,14 +6,14 @@ pipeline {
         maven "Maven 3.8.4"
     }
     stages {
+        stage('test') {
+            steps {
+                bat "mvn -Dmaven.test.failure.ignore=true test"
+            }
+        }
         stage('clean') {
             steps {
                 bat "mvn -Dmaven.test.failure.ignore=true clean"
-            }
-        }
-        stage('build') {
-            steps {
-                bat "mvn -Dmaven.test.failure.ignore=true build"
             }
         }
         stage('compile') {
